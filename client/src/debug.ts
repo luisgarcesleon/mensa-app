@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import 'react';
 
 declare const window: any;

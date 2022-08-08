@@ -1,14 +1,14 @@
 main.meeting.delegate,
 main.meeting.chairman {
-     @import 'components/meeting/modules/Start.scss';
-     @import 'components/meeting/modules/Speak.scss';
-     @import 'components/meeting/modules/Vote.scss';
+     @import '../components/meeting/modules/Start.scss';
+     @import '../components/meeting/modules/Speak.scss';
+     @import '../components/meeting/modules/Vote.scss';
 
      div.wrapper {
           flex: 0 1 auto;
           overflow: auto;
      }
-     
+
      div.container {
           display: flex;
           height: 100%;

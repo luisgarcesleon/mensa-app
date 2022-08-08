@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
 import { IconContext } from 'react-icons';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -34,4 +35,5 @@ const App: React.FC = () => {
      )
 }
 
-export default App;
+// export default App;
+export default hot(App);
