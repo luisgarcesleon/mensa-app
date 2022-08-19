@@ -1,0 +1,54 @@
+main.meeting.chairman {
+     display: flex;
+     flex-direction: column;
+
+     nav {
+          display: flex;
+          background-color: $white;
+          padding: 10px;
+
+          a {
+               margin: 0 25px;
+               font-weight: bold;
+               color: $black;
+               font-size: 16px;
+               text-decoration: none;
+               border-bottom: 3px solid transparent;
+
+               &:first-child {
+                    margin-left: 0;
+               }
+
+               &:last-child {
+                    margin-right: 0;
+               }
+
+               &.active {
+                    border-bottom-color: $deep-yellow;
+               }
+          }
+
+          div.modules {
+               padding-right: 25px;
+               border-right: 2px solid grey;
+          }
+     }
+
+     div.wrapper {
+          height: 100%;
+
+          div.delegates {
+               table {
+                    text-align: left;
+               }
+          }
+
+          div.broadcast {
+               height: 100%;
+
+               section:first-child {
+                    width: 55%;
+               }
+          }
+     }
+}

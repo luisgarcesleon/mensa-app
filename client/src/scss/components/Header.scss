@@ -1,0 +1,39 @@
+header {
+     background-color: white;
+     width: 100%;
+     display: grid;
+     grid-template-columns: auto 1fr auto;
+     align-items: center;
+
+     div.logo,
+     div.details,
+     div.session {
+          padding: 10px;
+     }
+
+     div.logo {
+          img {
+               width: 160px;
+          }
+     }
+
+     div.details {
+          h1 {
+               font-size: 23px;
+          }
+
+          p {
+               font-size: 16px;
+          }
+     }
+
+     div.session {
+          text-align: right;
+
+          div.user {
+               p {
+                    font-size: 16px;
+               }
+          }
+     }
+}

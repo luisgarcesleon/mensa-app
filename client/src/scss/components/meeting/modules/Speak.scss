@@ -1,0 +1,47 @@
+div.speak {
+     div.container {
+          section:first-child {
+               div.list {
+                    flex: 1;
+                    overflow-y: scroll;
+
+                    div.item {
+                         padding: 10px;
+                         display: grid;
+                         grid-template-columns: 50px 100px 50px auto;
+
+                         &.highlighted {
+                              p {
+                                   font-weight: bold;
+                              }
+                         }
+
+                         &:first-child {
+                              background-color: $deep-yellow;
+
+                              p,
+                              svg {
+                                   color: $white;
+                              }
+                         }
+
+                         p,
+                         svg {
+                              font-size: 18px;
+                         }
+
+                         div {
+                              display: flex;
+                              align-items: center;
+                         }
+
+                         div:nth-child(2) {
+                              p {
+                                   font-size: 14px;
+                              }
+                         }
+                    }
+               }
+          }
+     }
+}

@@ -1,0 +1,102 @@
+main.meeting.delegate,
+main.meeting.chairman {
+     @import 'components/meeting/modules/Start.scss';
+     @import 'components/meeting/modules/Speak.scss';
+     @import 'components/meeting/modules/Vote.scss';
+
+     div.container {
+          display: flex;
+          height: 100%;
+          position: relative;
+          padding: 10px;
+
+          section {
+               float: left;
+               display: flex;
+               flex-direction: column;
+
+               &:first-child {
+                    flex-grow: 1;
+               }
+
+               &:nth-child(2) {
+                    background-color: $white;
+                    padding: 0 10px;
+               }
+          }
+     }
+
+     div.buttons {
+          text-align: center;
+     }
+
+     div.join,
+     div.authorize {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          height: 100%;
+     }
+}
+
+main.meeting.delegate,
+main.meeting.chairman {
+     div.container {
+          section.broadcast {
+               width: 45%;
+
+               div.messages {
+                    overflow-y: scroll;
+                    flex-grow: 1;
+
+                    div.message {
+                         background-color: $grey;
+                         padding: 10px;
+                         margin: 10px 0;
+                         border-radius: 3px;
+
+                         div.date {
+                              float: right;
+
+                              p {
+                                   font-size: 14px;
+                              }
+                         }
+
+                         div.content {
+                              img {
+                                   max-width: 100%;
+                                   height: auto;
+                              }
+                         }
+                    }
+               }
+          }
+     }
+}
+
+main.meeting.chairman {
+     div.container {
+          section.timer {
+               width: 400px;
+
+               div.timer {
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+
+                    div.screen {
+                         flex-grow: 1;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+
+                         span {
+                              font-size: 36px;
+                         }
+                    }
+               }
+          }
+     }
+}

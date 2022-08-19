@@ -1,0 +1,25 @@
+{
+     "name": "mensa-ibd-tools",
+     "version": "1.0.0",
+     "description": "Clone repository: - `git clone git@github.com:GustavGenberg/mensa-ibd-tools.git`",
+     "main": "./server/build",
+     "scripts": {
+          "start": "node ./server",
+          "rebuild": "git pull && npm run build",
+          "build": "npm run build:shared && npm run build:client && npm run build:server",
+          "build:shared": "tsc -b client server",
+          "build:client": "cd ./client && npm run build",
+          "build:server": "cd ./server && npm run build"
+     },
+     "repository": {
+          "type": "git",
+          "url": "git+https://github.com/GustavGenberg/mensa-ibd-tools.git"
+     },
+     "keywords": [],
+     "author": "",
+     "license": "ISC",
+     "bugs": {
+          "url": "https://github.com/GustavGenberg/mensa-ibd-tools/issues"
+     },
+     "homepage": "https://github.com/GustavGenberg/mensa-ibd-tools#readme"
+}
