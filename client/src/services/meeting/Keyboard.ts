@@ -1,3 +1,3 @@
-import { Keyboard as keyboard } from 'keyboard.js';
+const Keyboard = require("keyboard.js");
 
-export const Keyboard = new keyboard();
+export const keyboard = new Keyboard();
