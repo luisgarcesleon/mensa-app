@@ -3,7 +3,7 @@ import { Visualization } from 'components/meeting/modules/vote/Visualization';
 import { ClientContext } from 'context/Client';
 import * as React from 'react';
 import { FaLock, FaLockOpen } from 'react-icons/fa';
-import { Keyboard } from 'services/meeting/Keyboard';
+// import { Keyboard } from 'services/meeting/Keyboard';
 import { debug } from '../../../debug';
 
 export class Vote extends React.Component {
@@ -23,25 +23,25 @@ export class Vote extends React.Component {
                }
           })
 
-          Keyboard.on('down', () => {
-               if (Keyboard.isDown(17)) {
-                    this.setState({
-                         ctrlIsDown: true
-                    })
-               }
-          })
+          // Keyboard.on('down', () => {
+          //      if (Keyboard.isDown(17)) {
+          //           this.setState({
+          //                ctrlIsDown: true
+          //           })
+          //      }
+          // })
 
-          Keyboard.on('up', () => {
-               if (!Keyboard.isDown(17)) {
-                    this.setState({
-                         ctrlIsDown: false
-                    })
-               }
-          })
+          // Keyboard.on('up', () => {
+          //      if (!Keyboard.isDown(17)) {
+          //           this.setState({
+          //                ctrlIsDown: false
+          //           })
+          //      }
+          // })
      }
 
      public componentWillUnmount() {
-          Keyboard.removeAllListeners();
+          // Keyboard.removeAllListeners();
      }
 
      public render() {
@@ -72,43 +72,43 @@ export class Vote extends React.Component {
                                                   <span>End vote</span>
                                              </button>
                                         ) : (
-                                                  <button className="light" onClick={() => {
-                                                       const secret = this.state.ctrlIsDown;
+                                             <button className="light" onClick={() => {
+                                                  const secret = this.state.ctrlIsDown;
 
-                                                       if (secret) {
-                                                            alert('Secret ballot enabled.');
-
-                                                            this.setState({
-                                                                 ctrlIsDown: false
-                                                            })
-                                                       }
-
-                                                       const number = prompt('Motion Number:', vote.motion.number);
-                                                       const name = prompt('Motion Name:', debug ? 'Dev motion' : '');
-
-                                                       if (!number || !name) return;
-
-                                                       this.context.send('chairman/mode/vote/enable', {
-                                                            number,
-                                                            name,
-                                                            secret
-                                                       }, ({ data }: any) => {
-                                                            if (data.error) {
-                                                                 console.error(data.message ? data.message : 'Disable vote failed.');
-                                                                 return;
-                                                            }
-
-                                                            console.log('Enable vote.');
-                                                       })
+                                                  if (secret) {
+                                                       alert('Secret ballot enabled.');
 
                                                        this.setState({
                                                             ctrlIsDown: false
                                                        })
-                                                  }}>
-                                                       <FaLockOpen />
-                                                       <span>Start vote{this.state.ctrlIsDown ? ' (secret)' : ''}</span>
-                                                  </button>
-                                             )}
+                                                  }
+
+                                                  const number = prompt('Motion Number:', vote.motion.number);
+                                                  const name = prompt('Motion Name:', debug ? 'Dev motion' : '');
+
+                                                  if (!number || !name) return;
+
+                                                  this.context.send('chairman/mode/vote/enable', {
+                                                       number,
+                                                       name,
+                                                       secret
+                                                  }, ({ data }: any) => {
+                                                       if (data.error) {
+                                                            console.error(data.message ? data.message : 'Disable vote failed.');
+                                                            return;
+                                                       }
+
+                                                       console.log('Enable vote.');
+                                                  })
+
+                                                  this.setState({
+                                                       ctrlIsDown: false
+                                                  })
+                                             }}>
+                                                  <FaLockOpen />
+                                                  <span>Start vote{this.state.ctrlIsDown ? ' (secret)' : ''}</span>
+                                             </button>
+                                        )}
                                    </div>
                               </div>
 

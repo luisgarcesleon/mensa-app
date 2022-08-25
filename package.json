@@ -9,7 +9,10 @@
           "build": "npm run build:shared && npm run build:client && npm run build:server",
           "build:shared": "tsc -b client server",
           "build:client": "cd ./client && npm run build",
-          "build:server": "cd ./server && npm run build"
+          "build:server": "cd ./server && npm run build",
+          "dev": "concurrently --kill-others \"PORT=3006 npm run dev:client\" \"npm run dev:server\"",
+          "dev:client": "cd ./client && npm start",
+          "dev:server": "cd ./server && ts-node-dev --files --transpile-only --respawn --inspect --project tsconfig.json src/index.ts"
      },
      "repository": {
           "type": "git",
@@ -21,5 +24,18 @@
      "bugs": {
           "url": "https://github.com/GustavGenberg/mensa-ibd-tools/issues"
      },
-     "homepage": "https://github.com/GustavGenberg/mensa-ibd-tools#readme"
+     "homepage": "https://github.com/GustavGenberg/mensa-ibd-tools#readme",
+     "devDependencies": {
+          "@typescript-eslint/eslint-plugin": "^5.33.0",
+          "@typescript-eslint/parser": "^5.33.0",
+          "concurrently": "^7.3.0",
+          "eslint": "^8.21.0",
+          "eslint-config-airbnb": "^19.0.4",
+          "eslint-plugin-import": "^2.26.0",
+          "eslint-plugin-jsx-a11y": "^6.6.1",
+          "eslint-plugin-react": "^7.30.1",
+          "eslint-plugin-react-hooks": "^4.6.0",
+          "ts-node-dev": "^2.0.0",
+          "typescript": "^4.7.4"
+     }
 }
