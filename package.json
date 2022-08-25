@@ -4,6 +4,7 @@
      "description": "Clone repository: - `git clone git@github.com:GustavGenberg/mensa-ibd-tools.git`",
      "main": "./server/build",
      "scripts": {
+          "install": "cd client; npm i; cd .. && cd server; npm i; cd ..",
           "start": "node ./server",
           "rebuild": "git pull && npm run build",
           "build": "npm run build:shared && npm run build:client && npm run build:server",
