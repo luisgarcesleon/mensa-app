@@ -3,7 +3,6 @@
      "version": "0.1.0",
      "private": true,
      "dependencies": {
-          "@c8h_/keyboard.js": "^0.1.0",
           "@types/classnames": "^2.2.9",
           "@types/dateformat": "^3.0.0",
           "@types/jest": "24.0.15",

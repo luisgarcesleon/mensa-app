@@ -3,7 +3,7 @@ import { ClientContext } from 'context/Client';
 import * as React from 'react';
 import { FaThumbsDown, FaThumbsUp, FaTimesCircle } from 'react-icons/fa';
 import { Delegate } from 'services/meeting/Delegate';
-import { VOTE_OPTIONS } from '../../../../../shared';
+import { VOTE_OPTIONS } from '../../../utils/consts';
 import { Summary } from './vote/Summary';
 import { Visualization } from './vote/Visualization';
 
