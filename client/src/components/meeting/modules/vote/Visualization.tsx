@@ -1,7 +1,6 @@
-import { ClientContext } from 'context/Client';
 import * as React from 'react';
-
-import { VOTE_OPTIONS } from '../../../../../../shared';
+import { ClientContext } from 'context/Client';
+import { VOTE_OPTIONS } from '../../../../utils/consts';
 
 export const Visualization = () => {
      const client = React.useContext(ClientContext);

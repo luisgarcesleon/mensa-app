@@ -43,12 +43,12 @@ export class Speak extends React.Component {
                                              {clientState.request ? (
                                                   <>
                                                        <FaTimes />
-                                                       <span>Cancel request</span>
+                                                       <span>Lower hand</span>
                                                   </>
                                              ) : (
                                                        <>
                                                             <FaRegCommentDots />
-                                                            <span>Request</span>
+                                                            <span>Raise hand</span>
                                                        </>
                                                   )}
                                         </button>
@@ -66,12 +66,12 @@ export class Speak extends React.Component {
                                              {clientState.pm ? (
                                                   <>
                                                        <FaTimes />
-                                                       <span>Cancel PM</span>
+                                                       <span>Cancel Priority</span>
                                                   </>
                                              ) : (
                                                        <>
                                                             <FaExclamationCircle />
-                                                            <span>Request PM</span>
+                                                            <span>Priority</span>
                                                        </>
                                                   )}
                                         </button>

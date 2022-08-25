@@ -3,7 +3,6 @@ import { Visualization } from 'components/meeting/modules/vote/Visualization';
 import { ClientContext } from 'context/Client';
 import * as React from 'react';
 import { FaLock, FaLockOpen } from 'react-icons/fa';
-// import { Keyboard } from 'services/meeting/Keyboard';
 import { debug } from '../../../debug';
 
 export class Vote extends React.Component {
@@ -14,6 +13,23 @@ export class Vote extends React.Component {
           ctrlIsDown: false
      }
 
+     selectKeyDown (event: any) {
+          if(event.keyCode === 17) {
+               this.setState({
+                    ctrlIsDown: true
+               })
+          } 
+     }
+
+     selectKeyUp (event: any) {
+          if(event.keyCode === 17) {
+               this.setState({
+                    ctrlIsDown: false
+               })
+          } 
+     }
+
+
      public componentDidMount() {
           this.context.send('chairman/meeting/mode', {
                mode: 'vote'
@@ -23,25 +39,13 @@ export class Vote extends React.Component {
                }
           })
 
-          // Keyboard.on('down', () => {
-          //      if (Keyboard.isDown(17)) {
-          //           this.setState({
-          //                ctrlIsDown: true
-          //           })
-          //      }
-          // })
-
-          // Keyboard.on('up', () => {
-          //      if (!Keyboard.isDown(17)) {
-          //           this.setState({
-          //                ctrlIsDown: false
-          //           })
-          //      }
-          // })
+          document.addEventListener("keydown", this.selectKeyDown, false);
+          document.addEventListener("keyup", this.selectKeyUp, false);
      }
 
      public componentWillUnmount() {
-          // Keyboard.removeAllListeners();
+          document.removeEventListener("keydown", this.selectKeyDown);
+          document.removeEventListener("keyup", this.selectKeyUp);
      }
 
      public render() {
