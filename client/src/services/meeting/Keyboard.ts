@@ -1,3 +1,3 @@
-const Keyboard = require("keyboard.js");
+const keyboard = require("keyboard.js");
 
-export const keyboard = new Keyboard();
+export const Keyboard = new keyboard();
