@@ -3,6 +3,7 @@
      "version": "0.1.0",
      "private": true,
      "dependencies": {
+          "@c8h_/keyboard.js": "^0.1.0",
           "@types/classnames": "^2.2.9",
           "@types/dateformat": "^3.0.0",
           "@types/jest": "24.0.15",
@@ -18,7 +19,6 @@
           "classnames": "^2.2.6",
           "dateformat": "^3.0.3",
           "delay": "^4.3.0",
-          "keyboard.js": "^1.0.0",
           "node-sass": "^4.12.0",
           "object-hash": "^1.3.1",
           "object.pick": "^1.3.0",
