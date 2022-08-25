@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { ClientContext } from 'context/Client';
 import * as React from 'react';
-import { VOTE_OPTIONS } from '../../../../../../shared/build';
+import { VOTE_OPTIONS } from '../../../../utils/consts';
 
 export const Summary = () => {
      const client = React.useContext(ClientContext);
