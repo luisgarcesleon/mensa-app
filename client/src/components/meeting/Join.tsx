@@ -2,47 +2,37 @@ import { ClientContext } from 'context/Client';
 import * as React from 'react';
 import { debug } from '../../debug';
 
-export class Join extends React.Component {
+export const Join = ()=> {
+     const[pin, setPin] = React.useState(debug ? { pin: '1234' } : {})
 
-     static contextType = ClientContext;
+     const [context, setContext] = React.useContext(ClientContext);
 
-     public state = debug ? {
-          pin: '1234'
-     } : {}
-
-     public componentDidMount() {
+     React.useEffect(()=> {
           if (debug) {
-               this.handleJoin(new Event(''));
+               handleJoin(new Event(''));
           }
-     }
+     }, [])
 
-     private handleInputChange(event: any) {
+     const handleInputChange = (event: any) => {
           event.persist();
 
-          this.setState({
-               [event.target.name]: event.target.value
-          })
+          setPin(event.target.value)
      }
-     private _handleInputChange = this.handleInputChange.bind(this);
 
-     private handleJoin(event: any) {
+     const handleJoin = (event: any) => {
           event.preventDefault();
 
-          this.context.join(this.state.pin);
-     }
-     private _handleJoin = this.handleJoin.bind(this);
-
-     public render() {
-          return (
-               <div className="join">
-                    <h2>Join</h2>
-
-                    <form className="inline" onSubmit={this._handleJoin}>
-                         <input type="text" name="pin" placeholder="PIN" onChange={this._handleInputChange} required autoFocus />
-                         <input type="submit" value="Join" />
-                    </form>
-               </div>
-          )
+          setContext(pin);
      }
 
+     return (
+          <div className="join">
+               <h2>Join</h2>
+
+               <form className="inline" onSubmit={handleJoin}>
+                    <input type="text" name="pin" placeholder="PIN" onChange={handleInputChange} required autoFocus />
+                    <input type="submit" value="Join" />
+               </form>
+          </div>
+     )
 }
