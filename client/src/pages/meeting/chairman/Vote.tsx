@@ -76,34 +76,34 @@ export class Vote extends React.Component {
                                                   <span>End vote</span>
                                              </button>
                                         ) : (
-                                                  <button className="light" onClick={() => {
-                                                       const secret = this.state.ctrlIsDown;
+                                             <button className="light" onClick={() => {
+                                                  const secret = this.state.ctrlIsDown;
 
-                                                       if (secret) {
-                                                            alert('Secret ballot enabled.');
+                                                  if (secret) {
+                                                       alert('Secret ballot enabled.');
 
-                                                            this.setState({
-                                                                 ctrlIsDown: false
-                                                            })
+                                                       this.setState({
+                                                            ctrlIsDown: false
+                                                       })
+                                                  }
+
+                                                  const number = prompt('Motion Number:', vote.motion.number);
+                                                  const name = prompt('Motion Name:', debug ? 'Dev motion' : '');
+
+                                                  if (!number || !name) return;
+
+                                                  this.context.send('chairman/mode/vote/enable', {
+                                                       number,
+                                                       name,
+                                                       secret
+                                                  }, ({ data }: any) => {
+                                                       if (data.error) {
+                                                            console.error(data.message ? data.message : 'Disable vote failed.');
+                                                            return;
                                                        }
 
-                                                       const number = prompt('Motion Number:', vote.motion.number);
-                                                       const name = prompt('Motion Name:', debug ? 'Dev motion' : '');
-
-                                                       if (!number || !name) return;
-
-                                                       this.context.send('chairman/mode/vote/enable', {
-                                                            number,
-                                                            name,
-                                                            secret
-                                                       }, ({ data }: any) => {
-                                                            if (data.error) {
-                                                                 console.error(data.message ? data.message : 'Disable vote failed.');
-                                                                 return;
-                                                            }
-
-                                                            console.log('Enable vote.');
-                                                       })
+                                                       console.log('Enable vote.');
+                                                  })
 
                                                        this.setState({
                                                             ctrlIsDown: false

@@ -28,6 +28,8 @@ database.once('open', () => {
      "username"	VARCHAR NOT NULL UNIQUE,
      "password"	VARCHAR NOT NULL
 )`)
+		database.run(`INSERT OR IGNORE INTO "users" (username,password)
+	VALUES ("admin","admin")`);
 
 		database.run(`INSERT OR IGNORE INTO "users" (username,password)
 		VALUES ("admin","admin")`);
