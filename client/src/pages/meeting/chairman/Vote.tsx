@@ -111,6 +111,7 @@ export class Vote extends React.Component {
                                                   }}>
                                                        <FaLockOpen />
                                                        <span>Start vote{this.state.ctrlIsDown ? ' (secret)' : ''}</span>
+                                                       <span>Hold CTRL for secret vote</span>
                                                   </button>
                                              )}
                                    </div>
