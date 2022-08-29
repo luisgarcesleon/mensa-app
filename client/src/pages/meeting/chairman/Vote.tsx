@@ -105,14 +105,15 @@ export class Vote extends React.Component {
                                                        console.log('Enable vote.');
                                                   })
 
-                                                  this.setState({
-                                                       ctrlIsDown: false
-                                                  })
-                                             }}>
-                                                  <FaLockOpen />
-                                                  <span>Start vote{this.state.ctrlIsDown ? ' (secret)' : ''}</span>
-                                             </button>
-                                        )}
+                                                       this.setState({
+                                                            ctrlIsDown: false
+                                                       })
+                                                  }}>
+                                                       <FaLockOpen />
+                                                       <span>Start vote{this.state.ctrlIsDown ? ' (secret)' : ''}</span>
+                                                       <span>Hold CTRL for secret vote</span>
+                                                  </button>
+                                             )}
                                    </div>
                               </div>
 

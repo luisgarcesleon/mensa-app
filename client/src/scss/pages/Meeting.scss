@@ -9,6 +9,11 @@ main.meeting.chairman {
           overflow: auto;
      }
 
+     div.wrapper {
+          flex: 0 1 auto;
+          overflow: auto;
+     }
+
      div.container {
           display: flex;
           height: 100%;

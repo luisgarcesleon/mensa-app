@@ -35,10 +35,10 @@
           "uuid": "^3.3.2"
      },
      "scripts": {
-          "start": "react-app-rewired --openssl-legacy-provider start",
-          "build": "react-app-rewired --openssl-legacy-provider build",
-          "test": "react-app-rewired --openssl-legacy-provider test",
-          "eject": "react-scripts --openssl-legacy-provider eject"
+          "start": "react-app-rewired --openssl-legacy-provider --openssl-legacy-provider start",
+          "build": "react-app-rewired --openssl-legacy-provider --openssl-legacy-provider build",
+          "test": "react-app-rewired --openssl-legacy-provider --openssl-legacy-provider test",
+          "eject": "react-scripts --openssl-legacy-provider --openssl-legacy-provider eject"
      },
      "eslintConfig": {
           "extends": "react-app"
