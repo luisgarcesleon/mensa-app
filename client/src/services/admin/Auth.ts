@@ -24,7 +24,7 @@ export class Auth {
 
                return true;
           } catch (e) {
-               console.error(e.response.data.message);
+               // console.error(e.response.data.message);
           }
 
           return false;
