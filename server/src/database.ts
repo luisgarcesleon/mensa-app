@@ -31,9 +31,6 @@ database.once('open', () => {
 		database.run(`INSERT OR IGNORE INTO "users" (username,password)
 	VALUES ("admin","admin")`);
 
-		database.run(`INSERT OR IGNORE INTO "users" (username,password)
-		VALUES ("admin","admin")`);
-
 		database.run(`CREATE TABLE IF NOT EXISTS "vote_motions" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	"meeting"	INTEGER NOT NULL,
