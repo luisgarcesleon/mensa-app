@@ -3,67 +3,53 @@ import { ClientContext } from 'context/Client';
 import * as React from 'react';
 import RichTextEditor, { EditorValue } from 'react-rte';
 
-export class Broadcast extends React.Component<any> {
+export const Broadcast = () => {
+     const client = React.useContext(ClientContext);
 
-     static contextType = ClientContext;
+     const [value, setValue] = React.useState<any>(RichTextEditor.createEmptyValue());
 
-     public state = {
-          value: RichTextEditor.createEmptyValue()
+     const onChange = (value: EditorValue) => {
+          setValue(value)
      }
 
-     constructor(props: any) {
-          super(props);
+     const broadcast = () => {
+          const html = value.toString('html');
 
-          this.onChange = this.onChange.bind(this);
-          this.broadcast = this.broadcast.bind(this);
-     }
-
-     private onChange(value: EditorValue) {
-          this.setState({ value });
-     }
-
-     private broadcast() {
-          const html = this.state.value.toString('html');
-
-          this.context.send('chairman/module/broadcast', { html }, ({ data }: any) => {
+          client.send('chairman/module/broadcast', { html }, ({ data }: any) => {
                if (data.error) {
                     console.error(data.message ? data.message : 'Broadcast failed.');
                     return;
                }
 
                console.log('Broadcast.');
-
-               this.setState({ value: RichTextEditor.createEmptyValue() })
+               setValue(RichTextEditor.createEmptyValue())
           })
      }
 
-     public render() {
-          return (
-               <div className="broadcast">
-                    <div className="container">
-                         <section>
-                              <div className="heading">
-                                   <h1>Broadcast</h1>
-                              </div>
+     return (
+          <div className="broadcast">
+               <div className="container">
+                    <section>
+                         <div className="heading">
+                              <h1>Broadcast</h1>
+                         </div>
 
-                              <RichTextEditor
-                                   value={this.state.value}
-                                   onChange={this.onChange}
-                                   autoFocus={true}
-                              />
+                         <RichTextEditor
+                              value={value}
+                              onChange={onChange}
+                              autoFocus={true}
+                         />
 
-                              <button onClick={this.broadcast}>Broadcast</button>
-                         </section>
-                         <section className="broadcast">
-                              <div className="heading">
-                                   <h1>Messages</h1>
-                              </div>
+                         <button onClick={broadcast}>Broadcast</button>
+                    </section>
+                    <section className="broadcast">
+                         <div className="heading">
+                              <h1>Messages</h1>
+                         </div>
 
-                              <BroadcastMessages />
-                         </section>
-                    </div>
+                         <BroadcastMessages />
+                    </section>
                </div>
-          )
-     }
-
+          </div>
+     )
 }

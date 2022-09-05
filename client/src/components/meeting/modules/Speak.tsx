@@ -63,17 +63,26 @@ export class Speak extends React.Component {
                                                   }
                                              })
                                         }}>
-                                             {clientState.pm ? (
-                                                  <>
-                                                       <FaTimes />
-                                                       <span>Cancel Priority</span>
-                                                  </>
-                                             ) : (
-                                                       <>
-                                                            <FaExclamationCircle />
-                                                            <span>Priority</span>
-                                                       </>
-                                                  )}
+                                             <>
+                                                  <FaTimes />
+                                                  <span>Cancel Priority</span>
+                                             </>
+                                        </button>
+
+                                        <button className="icon" onClick={() => {
+                                             this.context.send('delegate/mode/speak', {
+                                                  type: 'pm',
+                                                  state: !clientState.pm
+                                             }, ({ data }: any) => {
+                                                  if (data.error) {
+                                                       console.error('PM state update failed.');
+                                                  }
+                                             })
+                                        }}>
+                                             <>
+                                                  <FaExclamationCircle />
+                                                  <span>Priority</span>
+                                             </>
                                         </button>
                                    </div>
                               )}

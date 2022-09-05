@@ -3,47 +3,44 @@ import { withAuth } from 'hoc/withAuth';
 import * as React from 'react';
 import { Auth } from 'services/admin/Auth';
 
-class UploadForm extends React.Component<any> {
+const UploadForm = (props: any) => {
+     return (
+          <>
+               <input type="file" name="file" ref="file" />
 
-     public render() {
-          return (
-               <>
-                    <input type="file" name="file" ref="file" />
+               <button onClick={async () => {
+                    const ref: any = props.refs.file;
+                    const file = ref.files[0];
 
-                    <button onClick={async () => {
-                         const ref: any = this.refs.file;
-                         const file = ref.files[0];
+                    if (!file) return;
 
-                         if (!file) return;
+                    const list = await file.text();
 
-                         const list = await file.text();
+                    const delegates = list.split('\n')
+                         .filter((line: string) => line.length > 10) // 10 = commas+\n+fields
+                         .map((line: string) => {
+                              const parts = line.split(',');
 
-                         const delegates = list.split('\n')
-                              .filter((line: string) => line.length > 10) // 10 = commas+\n+fields
-                              .map((line: string) => {
-                                   const parts = line.split(',');
+                              return {
+                                   country: parts[0],
+                                   cc: parts[1],
+                                   name: parts[2],
+                                   initials: parts[3],
+                                   weight: parts[4]
+                              }
+                         })
 
-                                   return {
-                                        country: parts[0],
-                                        cc: parts[1],
-                                        name: parts[2],
-                                        initials: parts[3],
-                                        weight: parts[4]
-                                   }
-                              })
+                    const { data } = await Auth.api.put(`/meetings/${props.meeting.id}/delegates`, delegates);
 
-                         const { data } = await Auth.api.put(`/meetings/${this.props.meeting.id}/delegates`, delegates);
+                    if (data.error) {
+                         console.error('Error!');
+                         return;
+                    }
 
-                         if (data.error) {
-                              console.error('Error!');
-                              return;
-                         }
-
-                         console.log('File was uploaded.');
-                    }} >Upload</button>
-               </>
-          )
-     }
+                    console.log('File was uploaded.');
+               }} >Upload</button>
+          </>
+     )
 
 }
 

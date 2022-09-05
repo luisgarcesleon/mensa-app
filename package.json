@@ -1,7 +1,7 @@
 {
      "name": "mensa-ibd-tools",
      "version": "1.0.0",
-     "description": "Clone repository: - `git clone git@github.com:GustavGenberg/mensa-ibd-tools.git`",
+     "description": "Mensa International: https://github.com/mensa-int/voting-tool",
      "main": "./server/build",
      "scripts": {
           "start": "node ./server",
@@ -22,9 +22,9 @@
      "author": "",
      "license": "ISC",
      "bugs": {
-          "url": "https://github.com/GustavGenberg/mensa-ibd-tools/issues"
+          "url": "https://github.com/mensa-int/voting-tool/issues"
      },
-     "homepage": "https://github.com/GustavGenberg/mensa-ibd-tools#readme",
+     "homepage": "https://github.com/mensa-int/voting-tool",
      "devDependencies": {
           "@typescript-eslint/eslint-plugin": "^5.33.0",
           "@typescript-eslint/parser": "^5.33.0",
